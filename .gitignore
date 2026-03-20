@@ -1,8 +1,21 @@
+# Hexo generated files
+public/
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# OS files
 .DS_Store
 Thumbs.db
+
+# Database
 db.json
-*.log
-node_modules/
-public/
-.deploy*/
-_multiconfig.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
