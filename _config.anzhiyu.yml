@@ -1,0 +1,33 @@
+# 安知鱼主题配置
+# 参考：https://github.com/anzhiyu-c/hexo-theme-anzhiyu
+
+# 基础配置
+site_name: xhan51 的萧炎
+author: xhan51 的萧炎
+avatar: https://avatar.iran.li/boy
+favicon: /img/favicon.ico
+
+# 菜单配置
+menu:
+  首页: / || anzhiyu-icon-house
+  归档: /archives/ || anzhiyu-icon-box-archive
+  标签: /tags/ || anzhiyu-icon-tags
+  分类: /categories/ || anzhiyu-icon-shapes
+  关于: /about/ || anzhiyu-icon-paper-plane
+
+# 社交链接
+social:
+  GitHub: https://github.com/xhan51 || anzhiyu-icon-github
+  # Email: mailto:your@email.com || anzhiyu-icon-envelope
+
+# 代码块配置
+highlight_theme: light
+highlight_copy: true
+highlight_enable: true
+
+# 页脚配置
+footer:
+  enable: true
+  since: 2026
+  copyright: |
+    <p>© 2026 xhan51 的萧炎 - Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></p>
