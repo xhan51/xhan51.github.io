@@ -4,6 +4,9 @@ public/
 # Dependencies
 node_modules/
 
+# Theme (has its own git repo)
+themes/anzhiyu/
+
 # Logs
 *.log
 
