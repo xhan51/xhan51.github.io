@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>用 ESP32-S3 + 小智 AI 打造智能机器狗 | 萧炎的博客</title><meta name="keywords" content="ESP32,物联网，AI,机器人，开源硬件"><meta name="author" content="萧炎"><meta name="copyright" content="萧炎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="用 ESP32-S3 + 小智 AI 打造智能机器狗"><meta name="application-name" content="用 ESP32-S3 + 小智 AI 打造智能机器狗"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#ffffff"><meta property="og:type" content="article"><meta property="og:title" content="用 ESP32-S3 + 小智 AI 打造智能机器狗"><meta property="og:url" content="https://xhan51.github.io/2026/03/23/esp32-robot-dog/index.html"><meta property="og:site_name" content="萧炎的博客"><meta property="og:description" content="项目概述这是一个完全开源的 ESP32-S3 智能机器狗项目，集成了小智 AI 语音识别和 TTS 功能。通过语音指令控制机器狗完成前进、后退、转弯、坐下、站立、跳舞等动作。   核心功能 🗣️ 语音控制 - 小智 AI 自然语言处理，说句话就能控制 🦮 四足行走 - MG90S 金属齿轮舵机，"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://github.com/xhan51/esp32-s3-robot-dog/raw/main/docs/images/robot-dog-cover.jpg"><meta property="article:author" content="萧炎"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://github.com/xhan51/esp32-s3-robot-dog/raw/main/docs/images/robot-dog-cover.jpg"><meta name="description" content="项目概述这是一个完全开源的 ESP32-S3 智能机器狗项目，集成了小智 AI 语音识别和 TTS 功能。通过语音指令控制机器狗完成前进、后退、转弯、坐下、站立、跳舞等动作。   核心功能 🗣️ 语音控制 - 小智 AI 自然语言处理，说句话就能控制 🦮 四足行走 - MG90S 金属齿轮舵机，"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://xhan51.github.io/2026/03/23/esp32-robot-dog/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: undefined,
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: undefined,
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '萧炎的博客',
+  title: '用 ESP32-S3 + 小智 AI 打造智能机器狗',
+  postAI: '',
+  pageFillDescription: '项目概述, 核心功能, 硬件清单, 🔌 ESP32-S3 针脚连接详解, 完整接线示意图, GPIO 分配表, 模块接线详情, 1️⃣ PCA9685 舵机驱动板, 2️⃣ INMP441 麦克风, 3️⃣ MAX98357A 功放, 4️⃣ 电源系统, ⚠️ 重要注意事项, 技术亮点, 1. 高性价比, 2. 模块化架构, 3. 完善的文档, 快速开始, 1. 克隆项目, 2. 查看文档, 3. 烧录固件, 项目地址, 后续计划项目概述这是一个完全开源的智能机器狗项目集成了小智语音识别和功能通过语音指令控制机器狗完成前进后退转弯坐下站立跳舞等动作核心功能语音控制小智自然语言处理说句话就能控制四足行走金属齿轮舵机流畅步态语音反馈功放扬声器实时播报连接支持升级远程交互硬件清单组件型号数量单价主控板舵机金属齿轮驱动板路麦克风功放电池总计针脚连接详解完整接线示意图电源部分部分所有模块分配表功能连接模块信号类型关机控制数据字选择时钟字选择时钟数据数据时钟模块接线详情舵机驱动板舵机通道分配通道左前腿通道右前腿通道左后腿通道右后腿舵机线序棕色红色橙色黄色信号麦克风左声道功放或常开喇叭正极负极电源系统电池充电模块升压模块舵机驱动功放引脚通过重要注意事项舵机供电独立个舵机电流可达必须用独立升压模块供电共地处理所有模块必须连接在一起音频线短接音频线尽量短远离电源线测试顺序先测试再逐步添加各模块详细组装指南请查看技术亮点高性价比总成本仅市面同类产品售价模块化架构主程序步态控制器独立模块电源管理独立模块小智客户端独立模块音频处理独立模块完善的文档快速开始指南硬件采购清单软件安装教程故障排查手册快速开始克隆项目查看文档快速开始硬件采购软件安装烧录固件使用项目地址演示视频待添加后续计划蓝牙遥控功能超声波避障视觉跟踪自动回充导航欢迎贡献代码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2026-03-24 15:49:51',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">萧炎的博客</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div></div></div></div><div class="button-group"><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url">项目实战</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/ESP32/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>ESP32</span></a><a class="article-meta__tags" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91%EF%BC%8CAI/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>物联网，AI</span></a><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%8C%E5%BC%80%E6%BA%90%E7%A1%AC%E4%BB%B6/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>机器人，开源硬件</span></a></span></div></div><h1 class="post-title" itemprop="name headline">用 ESP32-S3 + 小智 AI 打造智能机器狗</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-23T06:00:00.000Z" title="发表于 2026-03-23 14:00:00">2026-03-23</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-24T07:49:51.650Z" title="更新于 2026-03-24 15:49:51">2026-03-24</time></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://github.com/xhan51/esp32-s3-robot-dog/raw/main/docs/images/robot-dog-cover.jpg"></div></header><main id="blog-container"><div class="layout hide-aside" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://xhan51.github.io/2026/03/23/esp32-robot-dog/"><header><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="url">项目实战</a><a href="/tags/ESP32/" tabindex="-1" itemprop="url">ESP32</a><a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91%EF%BC%8CAI/" tabindex="-1" itemprop="url">物联网，AI</a><a href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%8C%E5%BC%80%E6%BA%90%E7%A1%AC%E4%BB%B6/" tabindex="-1" itemprop="url">机器人，开源硬件</a><h1 id="CrawlerTitle" itemprop="name headline">用 ESP32-S3 + 小智 AI 打造智能机器狗</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">萧炎</span><time itemprop="dateCreated datePublished" datetime="2026-03-23T06:00:00.000Z" title="发表于 2026-03-23 14:00:00">2026-03-23</time><time itemprop="dateCreated datePublished" datetime="2026-03-24T07:49:51.650Z" title="更新于 2026-03-24 15:49:51">2026-03-24</time></header><h2 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h2><p>这是一个完全开源的 ESP32-S3 智能机器狗项目，集成了小智 AI 语音识别和 TTS 功能。通过语音指令控制机器狗完成前进、后退、转弯、坐下、站立、跳舞等动作。</p>
+<span id="more"></span>
+
+<h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><ul>
+<li>🗣️ <strong>语音控制</strong> - 小智 AI 自然语言处理，说句话就能控制</li>
+<li>🦮 <strong>四足行走</strong> - MG90S 金属齿轮舵机，流畅步态</li>
+<li>🔊 <strong>语音反馈</strong> - I2S 功放 + 扬声器，实时播报</li>
+<li>📱 <strong>WiFi 连接</strong> - 支持 OTA 升级，远程交互</li>
+</ul>
+<h2 id="硬件清单"><a href="#硬件清单" class="headerlink" title="硬件清单"></a>硬件清单</h2><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>型号</th>
+<th>数量</th>
+<th>单价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主控板</td>
+<td>ESP32-S3-WROOM-1</td>
+<td>1</td>
+<td>¥40</td>
+</tr>
+<tr>
+<td>舵机</td>
+<td>MG90S 金属齿轮</td>
+<td>4</td>
+<td>¥13</td>
+</tr>
+<tr>
+<td>驱动板</td>
+<td>PCA9685 16 路</td>
+<td>1</td>
+<td>¥10</td>
+</tr>
+<tr>
+<td>麦克风</td>
+<td>INMP441 I2S</td>
+<td>1</td>
+<td>¥12</td>
+</tr>
+<tr>
+<td>功放</td>
+<td>MAX98357A I2S</td>
+<td>1</td>
+<td>¥10</td>
+</tr>
+<tr>
+<td>电池</td>
+<td>2S 18650 7.4V</td>
+<td>1</td>
+<td>¥40</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td></td>
+<td></td>
+<td><strong>¥317</strong></td>
+</tr>
+</tbody></table>
+<h2 id="🔌-ESP32-S3-针脚连接详解"><a href="#🔌-ESP32-S3-针脚连接详解" class="headerlink" title="🔌 ESP32-S3 针脚连接详解"></a>🔌 ESP32-S3 针脚连接详解</h2><h3 id="完整接线示意图"><a href="#完整接线示意图" class="headerlink" title="完整接线示意图"></a>完整接线示意图</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                    ESP32-S3-WROOM-1                         │</span><br><span class="line">│                                                             │</span><br><span class="line">│  ┌───────────────┐                         ┌────────────┐  │</span><br><span class="line">│  │   电源部分    │                         │  GPIO 部分  │  │</span><br><span class="line">│  │               │                         │            │  │</span><br><span class="line">│  │  5V  ○────────┼─────→ PCA9685 VCC       │ GPIO 1  ○──┼──→ MAX98357A SD   │</span><br><span class="line">│  │  3.3V ○───────┼─────→ INMP441 VDD       │ GPIO 2  ○──┼──→ MAX98357A DIN  │</span><br><span class="line">│  │  GND ○────────┼─────→ 所有模块 GND      │ GPIO 3  ○──┼──→ MAX98357A WS   │</span><br><span class="line">│  │               │                         │ GPIO 4  ○──┼──→ MAX98357A BCLK │</span><br><span class="line">│  │  5V ○─────────┼─────→ MAX98357A VIN     │ GPIO 5  ○──┼──→ INMP441 WS     │</span><br><span class="line">│  │               │                         │ GPIO 6  ○──┼──→ INMP441 SCK    │</span><br><span class="line">│  │               │                         │ GPIO 7  ○──┼──→ INMP441 SD     │</span><br><span class="line">│  │               │                         │ GPIO 8  ○──┼──→ PCA9685 SDA    │</span><br><span class="line">│  │               │                         │ GPIO 9  ○──┼──→ PCA9685 SCL    │</span><br><span class="line">│  └───────────────┘                         └────────────┘  │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h3 id="GPIO-分配表"><a href="#GPIO-分配表" class="headerlink" title="GPIO 分配表"></a>GPIO 分配表</h3><table>
+<thead>
+<tr>
+<th>GPIO</th>
+<th>功能</th>
+<th>连接模块</th>
+<th>信号类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPIO 1</td>
+<td>SD</td>
+<td>MAX98357A</td>
+<td>关机控制</td>
+</tr>
+<tr>
+<td>GPIO 2</td>
+<td>DIN</td>
+<td>MAX98357A</td>
+<td>I2S 数据</td>
+</tr>
+<tr>
+<td>GPIO 3</td>
+<td>WS</td>
+<td>MAX98357A</td>
+<td>I2S 字选择</td>
+</tr>
+<tr>
+<td>GPIO 4</td>
+<td>BCLK</td>
+<td>MAX98357A</td>
+<td>I2S 时钟</td>
+</tr>
+<tr>
+<td>GPIO 5</td>
+<td>WS</td>
+<td>INMP441</td>
+<td>I2S 字选择</td>
+</tr>
+<tr>
+<td>GPIO 6</td>
+<td>SCK</td>
+<td>INMP441</td>
+<td>I2S 时钟</td>
+</tr>
+<tr>
+<td>GPIO 7</td>
+<td>SD</td>
+<td>INMP441</td>
+<td>I2S 数据</td>
+</tr>
+<tr>
+<td>GPIO 8</td>
+<td>SDA</td>
+<td>PCA9685</td>
+<td>I2C 数据</td>
+</tr>
+<tr>
+<td>GPIO 9</td>
+<td>SCL</td>
+<td>PCA9685</td>
+<td>I2C 时钟</td>
+</tr>
+</tbody></table>
+<h3 id="模块接线详情"><a href="#模块接线详情" class="headerlink" title="模块接线详情"></a>模块接线详情</h3><h4 id="1️⃣-PCA9685-舵机驱动板"><a href="#1️⃣-PCA9685-舵机驱动板" class="headerlink" title="1️⃣ PCA9685 舵机驱动板"></a>1️⃣ PCA9685 舵机驱动板</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PCA9685 → ESP32-S3</span><br><span class="line">VCC    → 5V</span><br><span class="line">GND    → GND</span><br><span class="line">SDA    → GPIO 8</span><br><span class="line">SCL    → GPIO 9</span><br><span class="line"></span><br><span class="line">舵机通道分配:</span><br><span class="line">- 通道 0 → 左前腿</span><br><span class="line">- 通道 1 → 右前腿</span><br><span class="line">- 通道 2 → 左后腿</span><br><span class="line">- 通道 3 → 右后腿</span><br></pre></td></tr></table></figure>
+
+<p><strong>舵机线序：</strong> 棕色&#x3D;GND，红色&#x3D;VCC(5V)，橙色&#x2F;黄色&#x3D;信号</p>
+<h4 id="2️⃣-INMP441-麦克风"><a href="#2️⃣-INMP441-麦克风" class="headerlink" title="2️⃣ INMP441 麦克风"></a>2️⃣ INMP441 麦克风</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INMP441 → ESP32-S3</span><br><span class="line">VDD     → 3.3V</span><br><span class="line">GND     → GND</span><br><span class="line">WS      → GPIO 5</span><br><span class="line">SCK     → GPIO 6</span><br><span class="line">SD      → GPIO 7</span><br><span class="line">L/R     → GND (左声道)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3️⃣-MAX98357A-功放"><a href="#3️⃣-MAX98357A-功放" class="headerlink" title="3️⃣ MAX98357A 功放"></a>3️⃣ MAX98357A 功放</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MAX98357A → ESP32-S3</span><br><span class="line">VIN       → 5V</span><br><span class="line">GND       → GND</span><br><span class="line">BCLK      → GPIO 4</span><br><span class="line">WS        → GPIO 3</span><br><span class="line">DIN       → GPIO 2</span><br><span class="line">SD        → GPIO 1 (或 3.3V 常开)</span><br><span class="line"></span><br><span class="line">喇叭：OUT+ → 正极，OUT- → 负极</span><br></pre></td></tr></table></figure>
+
+<h4 id="4️⃣-电源系统"><a href="#4️⃣-电源系统" class="headerlink" title="4️⃣ 电源系统"></a>4️⃣ 电源系统</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">2S 18650 电池 (7.4V)</span><br><span class="line">      ↓</span><br><span class="line">  TP4056 充电模块</span><br><span class="line">      ↓</span><br><span class="line">  MT3608 升压模块 (→ 5V)</span><br><span class="line">      ↓</span><br><span class="line">      ├────→ PCA9685 VCC (舵机驱动)</span><br><span class="line">      └────→ MAX98357A VIN (功放)</span><br><span class="line"></span><br><span class="line">ESP32-S3 5V 引脚 → INMP441 VDD (通过 3.3V LDO)</span><br></pre></td></tr></table></figure>
+
+<h3 id="⚠️-重要注意事项"><a href="#⚠️-重要注意事项" class="headerlink" title="⚠️ 重要注意事项"></a>⚠️ 重要注意事项</h3><ol>
+<li><strong>舵机供电独立</strong> - 4 个舵机电流可达 2-3A，必须用独立升压模块供电</li>
+<li><strong>共地处理</strong> - 所有模块 GND 必须连接在一起</li>
+<li><strong>音频线短接</strong> - I2S 音频线尽量短（&lt;10cm），远离电源线</li>
+<li><strong>测试顺序</strong> - 先测试 ESP32，再逐步添加各模块</li>
+</ol>
+<p>详细组装指南请查看：<a target="_blank" rel="noopener" href="https://github.com/xhan51/esp32-s3-robot-dog/blob/main/docs/assembly.md">docs&#x2F;assembly.md</a></p>
+<h2 id="技术亮点"><a href="#技术亮点" class="headerlink" title="技术亮点"></a>技术亮点</h2><h3 id="1-高性价比"><a href="#1-高性价比" class="headerlink" title="1. 高性价比"></a>1. 高性价比</h3><p>总成本仅 ¥317，市面同类产品售价 ¥800-2000</p>
+<h3 id="2-模块化架构"><a href="#2-模块化架构" class="headerlink" title="2. 模块化架构"></a>2. 模块化架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">主程序</span><br><span class="line">├── 步态控制器（独立模块）</span><br><span class="line">├── 电源管理（独立模块）</span><br><span class="line">├── 小智 AI 客户端（独立模块）</span><br><span class="line">└── 音频处理（独立模块）</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-完善的文档"><a href="#3-完善的文档" class="headerlink" title="3. 完善的文档"></a>3. 完善的文档</h3><ul>
+<li>快速开始指南</li>
+<li>硬件采购清单</li>
+<li>软件安装教程</li>
+<li>故障排查手册</li>
+</ul>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="1-克隆项目"><a href="#1-克隆项目" class="headerlink" title="1. 克隆项目"></a>1. 克隆项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/xhan51/esp32-s3-robot-dog.git</span><br><span class="line"><span class="built_in">cd</span> esp32-s3-robot-dog</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-查看文档"><a href="#2-查看文档" class="headerlink" title="2. 查看文档"></a>2. 查看文档</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速开始</span></span><br><span class="line">docs/GETTING_STARTED.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 硬件采购</span></span><br><span class="line">docs/HARDWARE_BOM.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 软件安装</span></span><br><span class="line">docs/SOFTWARE_SETUP.md</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-烧录固件"><a href="#3-烧录固件" class="headerlink" title="3. 烧录固件"></a>3. 烧录固件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 PlatformIO</span></span><br><span class="line"><span class="built_in">cd</span> firmware</span><br><span class="line">pio run --target upload</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><ul>
+<li><strong>GitHub:</strong> <a target="_blank" rel="noopener" href="https://github.com/xhan51/esp32-s3-robot-dog">https://github.com/xhan51/esp32-s3-robot-dog</a></li>
+<li><strong>演示视频：</strong> (待添加)</li>
+</ul>
+<h2 id="后续计划"><a href="#后续计划" class="headerlink" title="后续计划"></a>后续计划</h2><ul>
+<li><input disabled="" type="checkbox"> 蓝牙遥控功能</li>
+<li><input disabled="" type="checkbox"> 超声波避障</li>
+<li><input disabled="" type="checkbox"> ESP32-CAM 视觉跟踪</li>
+<li><input disabled="" type="checkbox"> 自动回充导航</li>
+</ul>
+<hr>
+<p><strong>欢迎 Star、Fork、贡献代码！</strong> 🐕🔥</p>
+</article><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2026/03/24/openclaw-ai-novel-monetization/"><img class="next-cover" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">用 OpenClaw 批量生成 AI 小说并变现的完整指南</div></div></a></div></nav></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">2</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://hexo.anheyu.com/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
