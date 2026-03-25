@@ -1,0 +1,507 @@
+/* ========================================
+   AnZhiYu 主题自定义美化样式
+   让博客更现代、更有科技感
+   ======================================== */
+
+/* ────────────────────────────────────────
+   1. 全局配色方案 - 科技蓝紫渐变
+   ──────────────────────────────────────── */
+:root {
+  --anzhiyu-main: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --anzhiyu-theme: #667eea;
+  --anzhiyu-theme-op: rgba(102, 126, 234, 0.15);
+  --anzhiyu-theme-op-deep: rgba(102, 126, 234, 0.3);
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-bg-hover: rgba(255, 255, 255, 1);
+  --text-highlight-color: #667eea;
+  --text-highlight-hover: #764ba2;
+  --shadow-light: 0 8px 30px rgba(102, 126, 234, 0.15);
+  --shadow-hover: 0 15px 40px rgba(102, 126, 234, 0.25);
+}
+
+/* 暗黑模式配色 */
+[data-theme="dark"] {
+  --card-bg: rgba(30, 30, 34, 0.95);
+  --card-bg-hover: rgba(35, 35, 40, 1);
+  --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ────────────────────────────────────────
+   2. 导航栏美化
+   ──────────────────────────────────────── */
+#page-header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+#page-header.nav-fixed {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.98) 0%, rgba(118, 75, 162, 0.98) 100%) !important;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+#site-title, #site-subtitle {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 导航链接 hover 效果 */
+#nav-right .nav-item a:hover,
+#nav-menu a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ────────────────────────────────────────
+   3. 首页卡片美化
+   ──────────────────────────────────────── */
+.post-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  overflow: hidden;
+}
+
+.post-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+  background: var(--card-bg-hover);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.post-card .post-card-content {
+  padding: 24px;
+}
+
+.post-card-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  transition: all 0.3s ease;
+}
+
+.post-card:hover .post-card-title {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.post-card-excerpt {
+  color: #666;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+[data-theme="dark"] .post-card-excerpt {
+  color: #aaa;
+}
+
+/* ────────────────────────────────────────
+   4. 文章卡片封面图效果
+   ──────────────────────────────────────── */
+.post-card .post_cover {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-card .post_cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.post-card:hover .post_cover img {
+  transform: scale(1.1);
+}
+
+/* 封面图渐变遮罩 */
+.post-card .post_cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────
+   5. 文章标签美化
+   ──────────────────────────────────────── */
+.post-card .article-meta__tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.post-card .article-meta__tags a {
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: var(--text-highlight-color);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.post-card .article-meta__tags a:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  border-color: transparent;
+}
+
+/* ────────────────────────────────────────
+   6. 时间轴美化
+   ──────────────────────────────────────── */
+.post-card .article-meta__date {
+  color: #999;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.post-card .article-meta__date::before {
+  content: '📅';
+  font-size: 1rem;
+}
+
+[data-theme="dark"] .post-card .article-meta__date {
+  color: #777;
+}
+
+/* ────────────────────────────────────────
+   7. 分页按钮美化
+   ──────────────────────────────────────── */
+#pagination .page-number,
+#pagination .extend {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: var(--text-highlight-color);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#pagination .page-number:hover,
+#pagination .extend:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+#pagination .current {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* ────────────────────────────────────────
+   8. 文章内标题美化
+   ──────────────────────────────────────── */
+#content-inner h1,
+#content-inner h2,
+#content-inner h3,
+#content-inner h4,
+#content-inner h5,
+#content-inner h6 {
+  position: relative;
+  padding-left: 20px;
+  color: #333;
+  font-weight: 700;
+}
+
+[data-theme="dark"] #content-inner h1,
+[data-theme="dark"] #content-inner h2,
+[data-theme="dark"] #content-inner h3,
+[data-theme="dark"] #content-inner h4,
+[data-theme="dark"] #content-inner h5,
+[data-theme="dark"] #content-inner h6 {
+  color: #eee;
+}
+
+#content-inner h1::before,
+#content-inner h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+}
+
+#content-inner h3::before,
+#content-inner h4::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #667eea;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* ────────────────────────────────────────
+   9. 代码块美化
+   ──────────────────────────────────────── */
+#content-inner figure.highlight,
+#content-inner pre {
+  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3f 100%);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+#content-inner figure.highlight::before,
+#content-inner pre::before {
+  content: '';
+  display: block;
+  height: 32px;
+  background: linear-gradient(90deg, #ff5f56 0%, #ffbd2e 50%, #27c93f 100%);
+  margin-bottom: 10px;
+}
+
+#content-inner code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+/* ────────────────────────────────────────
+   10. 引用块美化
+   ──────────────────────────────────────── */
+#content-inner blockquote {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  color: #666;
+  font-style: italic;
+}
+
+[data-theme="dark"] #content-inner blockquote {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: #aaa;
+}
+
+blockquote p::before {
+  content: '"';
+  font-size: 2rem;
+  color: #667eea;
+  margin-right: 8px;
+  vertical-align: -5px;
+}
+
+/* ────────────────────────────────────────
+   11. 表格美化
+   ──────────────────────────────────────── */
+#content-inner table {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1);
+  margin: 20px 0;
+}
+
+#content-inner table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+#content-inner table tbody tr {
+  transition: all 0.3s ease;
+}
+
+#content-inner table tbody tr:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+[data-theme="dark"] #content-inner table tbody tr:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+/* ────────────────────────────────────────
+   12. 按钮美化
+   ──────────────────────────────────────── */
+#content-inner .btn-center,
+#content-inner a.button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+#content-inner .btn-center:hover,
+#content-inner a.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+/* ────────────────────────────────────────
+   13. 返回顶部按钮
+   ──────────────────────────────────────── */
+#go-up {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+#go-up:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* ────────────────────────────────────────
+   14. 侧边栏卡片美化
+   ──────────────────────────────────────── */
+#aside-content .card-widget {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+#aside-content .card-widget:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+#aside-content .card-widget .card-header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  color: var(--text-highlight-color);
+  font-weight: 600;
+  border-radius: 16px 16px 0 0;
+  padding: 12px 20px;
+}
+
+/* ────────────────────────────────────────
+   15. 滚动条美化
+   ──────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* ────────────────────────────────────────
+   16. 加载动画
+   ──────────────────────────────────────── */
+.loading-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* ────────────────────────────────────────
+   17. 响应式优化
+   ──────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .post-card {
+    border-radius: 12px;
+  }
+  
+  .post-card .post-card-content {
+    padding: 16px;
+  }
+  
+  .post-card-title {
+    font-size: 1.2rem;
+  }
+  
+  #content-inner h1,
+  #content-inner h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ────────────────────────────────────────
+   18. 暗色模式优化
+   ──────────────────────────────────────── */
+[data-theme="dark"] #page-header {
+  background: linear-gradient(135deg, rgba(30, 30, 46, 0.95) 0%, rgba(45, 30, 60, 0.95) 100%) !important;
+}
+
+[data-theme="dark"] #page-header.nav-fixed {
+  background: linear-gradient(135deg, rgba(25, 25, 35, 0.98) 0%, rgba(40, 30, 50, 0.98) 100%) !important;
+}
+
+[data-theme="dark"] .post-card {
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+/* ────────────────────────────────────────
+   19. 特殊效果 - 玻璃拟态
+   ──────────────────────────────────────── */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ────────────────────────────────────────
+   20. 页脚美化
+   ──────────────────────────────────────── */
+#footer {
+  background: linear-gradient(135deg, rgba(30, 30, 46, 0.95) 0%, rgba(45, 30, 60, 0.95) 100%);
+  color: #aaa;
+  padding: 40px 0;
+  margin-top: 60px;
+}
+
+#footer a {
+  color: #667eea;
+  transition: all 0.3s ease;
+}
+
+#footer a:hover {
+  color: #764ba2;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+/* ========================================
+   结束标记
+   ======================================== */
